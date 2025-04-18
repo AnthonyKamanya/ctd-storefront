@@ -1,30 +1,27 @@
 import { useState } from 'react';
 import inventoryData from './assets/catalog.json';
 import './App.css';
-import logo from './assets/react.svg'
+import Header from './Header';
+import ProductList from './ProductList';
+import ProductCard from './ProductCard';
 
 function App() {
   const [inventory, setInventory] = useState(inventoryData.inventory);
+
+  function promoteItem() {
+    return (
+      <ProductCard
+        name="Limited Edition Tee!"
+        description="Special limited edition neon green shirt with a metallic 
+        Code the Dream Logo shinier than the latest front-end framework! 
+        Signed by the legendary Frank!"
+      />
+    );
+  }
   return (
     <main>
-      <div className="coming-soon">
-        <h1>CTD Swag</h1>
-        <div style={{ height: 100, width: 100 }}>
-          <img src={logo} alt="Code The Dream Logo" />
-        </div>
-      </div>
-      <ul>
-        {inventory.map((item) => {
-          return (
-            <li key={item.id}>
-              <div className="itemCard">
-                <h2>{item.baseName}</h2>
-                <p>{item.baseDescription}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <Header />
+      <ProductList inventory={inventory} >{promoteItem()}</ProductList>
     </main>
   );
 }
