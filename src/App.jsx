@@ -11,17 +11,17 @@ function App() {
   const [inventory, setInventory] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  function handleCloseCart(){
+  function handleCloseCart() {
     //prevents re-render if unchanged
-    if(isCartOpen){
-      setIsCartOpen(false)
+    if (isCartOpen) {
+      setIsCartOpen(false);
     }
   }
 
-  function handleOpenCart(){
+  function handleOpenCart() {
     //prevents re-render if unchanged
-    if(!isCartOpen){
-      setIsCartOpen(true)
+    if (!isCartOpen) {
+      setIsCartOpen(true);
     }
   }
 
@@ -79,7 +79,7 @@ function App() {
           handleAddItemToCart={handleAddItemToCart}
         ></ProductList>
         {/*`isCartOpen has to be true for the cart to be rendered*/}
-        {isCartOpen && <Cart cart={cart}  handleCloseCart={handleCloseCart}/>}
+        {isCartOpen && <Cart cart={cart} setCart={setCart} handleCloseCart={handleCloseCart} />}
       </main>
       <footer>
         <p>
