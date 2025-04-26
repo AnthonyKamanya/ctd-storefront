@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import inventoryData from './assets/catalog.json';
+import inventoryData from './catalog.json';
 import './App.css';
-import Header from './Header';
-import ProductList from './ProductList';
-import Cart from './Cart';
+import Header from './shared/Header.jsx';
+import ProductList from './features/ProductList/ProductList.jsx';
+import Cart from './features/Cart/Cart.jsx';
+import Footer from './shared/Footer.jsx';
 
 function App() {
-  const currentYear = new Date().getFullYear();
-
   const [inventory, setInventory] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -79,14 +78,15 @@ function App() {
           handleAddItemToCart={handleAddItemToCart}
         ></ProductList>
         {/*`isCartOpen has to be true for the cart to be rendered*/}
-        {isCartOpen && <Cart cart={cart} setCart={setCart} handleCloseCart={handleCloseCart} />}
+        {isCartOpen && (
+          <Cart
+            cart={cart}
+            setCart={setCart}
+            handleCloseCart={handleCloseCart}
+          />
+        )}
       </main>
-      <footer>
-        <p>
-          Made with ❤️ | &copy; {currentYear}{' '}
-          <a href="https://codethedream.org/">CTD </a>
-        </p>
-      </footer>
+      <Footer />
     </>
   );
 }

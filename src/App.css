@@ -323,7 +323,7 @@ button:disabled {
 }
 
 .cartCount {
-  color:blueviolet;
+  color: blueviolet;
   position: absolute;
   top: 45%;
   right: 45%;
