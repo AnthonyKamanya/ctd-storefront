@@ -1,4 +1,4 @@
-import placeholder from './assets/placeholder.png';
+import CartItem from './CartItem';
 import { useState } from 'react';
 
 function Cart({ cart, handleCloseCart, setCart }) {
@@ -73,29 +73,11 @@ function Cart({ cart, handleCloseCart, setCart }) {
             <ul className="cartList">
               {workingCart.map((item) => {
                 return (
-                  <li className="cartListItem" key={item.id}>
-                    <img src={placeholder} alt="" />
-                    <h2>{item.baseName}</h2>
-                    {item.variantName !== 'Default' ? (
-                      <p>{item.variantName}</p>
-                    ) : null}
-                    <div className="cartListItemSubtotal">
-                      <p>Count: {item.itemCount}</p>
-                      <label>
-                        Count:
-                        <input
-                          type="number"
-                          value={item.itemCount}
-                          onChange={(event) =>
-                            handleUpdateField({ event, id: item.id })
-                          }
-                        />
-                      </label>
-                      <p>
-                        Subtotal: £{(item.price * item.itemCount).toFixed(2)}
-                      </p>
-                    </div>
-                  </li>
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    onHandleItemUpdate={handleUpdateField}
+                  />
                 );
               })}
             </ul>

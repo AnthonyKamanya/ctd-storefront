@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import ProductCardVariants from './ProductCardVariants';
-import placeholder from "./assets/placeholder.png"
+import placeholder from '/src/assets/placeholder.png';
 
 function ProductCard({ name, description, product, handleAddItemToCart }) {
   const [areVariantsShown, setAreVariantsShown] = useState();
   return (
     <li className="productCard">
       <div className="productPreview">
-      <img src={placeholder} alt=" " />
-    </div>
+        <img src={placeholder} alt=" " />
+      </div>
       <div className="itemCard">
         <h2>{name}</h2>
         <p>{description}</p>

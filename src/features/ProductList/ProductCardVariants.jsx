@@ -14,7 +14,7 @@ function ProductCardVariants({ variants, closeVariants, handleAddItemToCart }) {
             <li key={variant.id} className="productVariant">
               <div className="variantPreview">
                 <img
-                  src={`/public/product-images/${variant.image}`}
+                  src={`/src/product-images/${variant.image}`}
                   alt={variant.variantDescription}
                 />
                 <p>${variant.price}</p>
