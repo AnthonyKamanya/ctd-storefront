@@ -9,6 +9,23 @@ import Footer from './shared/Footer.jsx';
 function App() {
   const [inventory, setInventory] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
+  useEffect(() => {
+    async () => {
+      try {
+        const resp = await fetch(`${baseURL}/products`);
+        if (!resp.ok) {
+          throw new Error(resp.status);
+        }
+        const products = await resp.json();
+        console.log(products);
+        setInventory([...products]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  }, []);
 
   function handleCloseCart() {
     //prevents re-render if unchanged
